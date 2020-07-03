@@ -16,11 +16,8 @@ def calculateCostAfterDeal(item):
   if(item.quantity <= item.deal.maxQuantity):
     return(item.deal.dealPrice * item.quantity)
   else:
-    totalCostForItemsThatQualifyForDeal = item.deal.dealPrice * item.deal.maxQuantity
     totalCostForItemsThatDoNotQualifyForDeal = item.price * (item.quantity - item.deal.maxQuantity)
-    total = totalCostForItemsThatDoNotQualifyForDeal + totalCostForItemsThatQualifyForDeal
-    print("Total dont qualify= ", totalCostForItemsThatDoNotQualifyForDeal)
-    print("Total do qualify= ", totalCostForItemsThatQualifyForDeal)
+    total = totalCostForItemsThatDoNotQualifyForDeal + item.deal.dealPrice
     return(total)
 
 def calculateCost(item):
@@ -34,7 +31,6 @@ def checkout(items):
     return(calculateCost(item));
     
 def main():
-  print(cannedBeans.deal.dealPrice)
   items = [cannedBeans]
   print("Total cost = ", checkout(items))
 
